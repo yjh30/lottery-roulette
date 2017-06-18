@@ -1,0 +1,37 @@
+{
+  "name": "lottery-roulette",
+  "version": "1.0.0",
+  "description": "lottery roulette",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=dev ./node_modules/.bin/webpack-dev-server",
+    "build": "rimraf ./build/ && NODE_ENV=pro ./node_modules/.bin/webpack -p --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yjh30/lottery-roulette.git"
+  },
+  "keywords": [
+    "lottery",
+    "roulette"
+  ],
+  "author": "yangjunhua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yjh30/lottery-roulette/issues"
+  },
+  "homepage": "https://github.com/yjh30/lottery-roulette#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "rimraf": "^2.6.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

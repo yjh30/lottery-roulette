@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮盘抽奖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        img {
+            width: 100%;
+            vertical-align: top;
+        }
+        
+        #lottery-roulette {
+            width: 292px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .arrow {
+            width: 82px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        button {
+            margin: 15px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lottery-roulette">
+        <img class="prizes" src="./images/prizes.png" alt="">
+        <img class="arrow" src="./images/arrow.png" alt="">
+    </div>
+
+    <button>8元现金</button>
+    <button>iphone7</button>
+    <button>20元现金</button>
+    <button>5元现金</button>
+    <button>面膜</button>
+    <button>50元现金</button>
+</body>
+
+</html>
