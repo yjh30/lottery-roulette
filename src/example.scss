@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    vertical-align: top;
+}
+
+#lottery-roulette {
+    width: 292px;
+    margin-top: 50px;
+    position: relative;
+}
+
+.arrow {
+    width: 82px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    margin: 15px 50px;
+}
+
+#canvas-wrap {
+    width: 640px;
+    margin: 100px auto;
+}
+canvas {
+    width: 640px;
+    height: 640px;
+}
