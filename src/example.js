@@ -68,8 +68,8 @@ function drawRewardsByCanvas(canvas, options = {}) {
         context.translate(radius, radius);
 
         const centerAngle = startAngle + baseAngle / 2;
-        const translateX = Math.cos(utils.toRadian(centerAngle)) * (radius - options.textMarginTop);
-        const translateY = Math.sin(utils.toRadian(centerAngle)) * (radius - options.textMarginTop);
+        const translateX = Math.cos(utils.toRadian(centerAngle)) * (radius - utils.getRetinaValue(options.textMarginTop));
+        const translateY = Math.sin(utils.toRadian(centerAngle)) * (radius - utils.getRetinaValue(options.textMarginTop));
         context.translate(translateX, translateY);
         context.rotate(utils.toRadian(centerAngle + 90));
 
@@ -90,6 +90,7 @@ drawRewardsByCanvas(document.querySelector('canvas'), {
     bgFillStyles: ['#ffdf3e', '#fabe00'],
     fontSize: 16,
     textFillStyle: 'green',
+    textMarginTop: 50,
     rewards: [
         ['100元', '100元+'],
         ['200元'],
