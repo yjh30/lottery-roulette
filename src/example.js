@@ -37,7 +37,6 @@ function drawRewardsByCanvas(canvas, options = {}) {
     context.textBaseline = options.textBaseline;
     context.textAlign = options.textAlign;
     context.textMarginTop = options.textMarginTop;
-    context.fillStyle = options.fillStyle;
 
     const length = options.rewards.length;
     const baseAngle = 360 / length;

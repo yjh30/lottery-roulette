@@ -3,7 +3,7 @@
  * @param {Number} value
  */
 export function getRetinaValue(value) {
-    if (window.devicePixelRatio > 2) {
+    if (window.devicePixelRatio >= 2) {
     	return value * parseInt(window.devicePixelRatio, 10);
     } else {
     	return value;
@@ -23,7 +23,7 @@ export function toRadian(degree) {
  * @param {DOM} canvas 
  */
 export function initRetinaCanvasSize(canvas, width, height) {
-    if (window.devicePixelRatio > 2) {
+    if (window.devicePixelRatio >= 2) {
         canvas.width = width * parseInt(window.devicePixelRatio, 10);
         canvas.height = height * parseInt(window.devicePixelRatio, 10);
     } else {
