@@ -6,13 +6,13 @@ import * as utils from './utils';
  * @param {Object} options 配置对象
  * @property {Object} options.canvasWidth 画布宽
  * @property {Number} options.canvasHeight 画布高
+ * @property {Array} options.bgFillStyles 背景填充颜色
  * @property {Number} options.fontSize 字体大小
  * @property {Number} options.fontFamily 字体类型
- * @property {String} options.fillStyle 字体填充颜色
  * @property {String} options.textAlign 文本水平对齐方式
  * @property {String} options.textBaseline 文本垂直对齐方式
- * @property {Array} options.bgFillStyles 背景填充颜色
- * @property {Number} options.textDistance 文本距离外围圆弧的距离
+ * @property {String} options.textFillStyle 字体填充颜色
+ * @property {Number} options.textMarginTop 文本距离圆弧的距离
  * @property {Array} options.rewards 奖品
  */
 
@@ -21,7 +21,8 @@ function drawRewardsByCanvas(canvas, options = {}) {
         fontSize: 16,
         fontFamily: 'Microsoft YaHei',
         textBaseline: 'top',
-        textAlign: 'center'
+        textAlign: 'center',
+        textMarginTop: 0
     }, options);
 
     if (!options.canvasHeight) {
@@ -35,6 +36,7 @@ function drawRewardsByCanvas(canvas, options = {}) {
     context.font = `${utils.getRetinaValue(options.fontSize)}px ${options.fontFamily}`;
     context.textBaseline = options.textBaseline;
     context.textAlign = options.textAlign;
+    context.textMarginTop = options.textMarginTop;
     context.fillStyle = options.fillStyle;
 
     const length = options.rewards.length;
@@ -52,7 +54,7 @@ function drawRewardsByCanvas(canvas, options = {}) {
         // 填充每块区域的背景色调 start ******************
         context.beginPath();
         context.arc(radius, radius, radius, utils.toRadian(startAngle), utils.toRadian(endAngle), false);
-        context.arc(radius, radius, utils.getRetinaValue(30), utils.toRadian(endAngle), utils.toRadian(startAngle), true);
+        context.arc(radius, radius, utils.getRetinaValue(0), utils.toRadian(endAngle), utils.toRadian(startAngle), true);
         context.closePath();
 
         const styleIndex = i % options.bgFillStyles.length;
@@ -66,13 +68,13 @@ function drawRewardsByCanvas(canvas, options = {}) {
         context.translate(radius, radius);
 
         const centerAngle = startAngle + baseAngle / 2;
-        const translateX = Math.cos(utils.toRadian(centerAngle)) * Math.cos(utils.toRadian(baseAngle / 2)) * radius * 3/4;
-        const translateY = Math.sin(utils.toRadian(centerAngle)) * Math.cos(utils.toRadian(baseAngle / 2)) * radius * 3/4 ;
+        const translateX = Math.cos(utils.toRadian(centerAngle)) * (radius - options.textMarginTop);
+        const translateY = Math.sin(utils.toRadian(centerAngle)) * (radius - options.textMarginTop);
         context.translate(translateX, translateY);
         context.rotate(utils.toRadian(centerAngle + 90));
 
         const texts = options.rewards[i];
-        context.fillStyle = options.fillStyle;
+        context.fillStyle = options.textFillStyle;
         for (let j = 0; j < texts.length; j++) {
             context.fillText(texts[j], 0, utils.getRetinaValue(20) * j);
         }
@@ -85,9 +87,9 @@ function drawRewardsByCanvas(canvas, options = {}) {
 
 drawRewardsByCanvas(document.querySelector('canvas'), {
     canvasWidth: 360,
-    fontSize: 16,
     bgFillStyles: ['#ffdf3e', '#fabe00'],
-    fillStyle: 'green',
+    fontSize: 16,
+    textFillStyle: 'green',
     rewards: [
         ['100元', '100元+'],
         ['200元'],
@@ -97,7 +99,7 @@ drawRewardsByCanvas(document.querySelector('canvas'), {
         ['600元'],
         ['700元'],
         ['800元'],
-        ['900元'],
-        ['1000元'],
+        // ['900元'],
+        // ['1000元'],
     ]
 });
